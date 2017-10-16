@@ -9,7 +9,7 @@ class Msg:
         pass
 
     @abstractmethod
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         pass
 
     @abstractmethod
@@ -21,7 +21,7 @@ class KillServiceMsg(Msg):
         if s == "KILL_SERVICE\n":
             return KillServiceMsg()
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         return self
 
     def response(self, server):
@@ -32,7 +32,7 @@ class HelloMsg(Msg):
         if s == "HELO text\n":
             return self
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         return self
 
     def response(self, server):
@@ -47,7 +47,7 @@ class JoinChatroomMsg(Msg):
             self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name = match.groups()
             return self
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name)
         return self
 
@@ -63,7 +63,7 @@ class LeaveChatroomMsg(Msg):
             self.room_ref, self.join_id, self.client_name = match.groups()
             return self
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         self.room_ref, self.join_id = server.leave_chatroom(self.room_ref, self.join_id, self.client_name)
         return self
 
@@ -79,7 +79,7 @@ class DisconnectMsg(Msg):
             self.client_ip_addr, self.client_port_num, self.client_name = match.groups()
             return self
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         server.disconnect(self.client_ip_addr, self.client_port_num, self.client_name)
         return self
 
@@ -94,7 +94,7 @@ class ChatMsg(Msg):
             self.room_ref, self.join_id, self.client_name, self.msg = match.groups()
             return self
 
-    def side_effect(self, server):
+    def side_effect(self, client, server):
         self.room_ref, self.client_name, self.msg = server.send_msg(self.room_ref, self.join_id, self.client_name, self.msg)
         return self
 
@@ -103,7 +103,9 @@ class ChatMsg(Msg):
             self.room_ref, self.client_name, self.msg)
 
 from server import Server
+from client import Client
 
+c = Client(1)
 s = Server('0.0.0.0', 8080, 13319741)
 
 tmp = ChatMsg()
@@ -112,7 +114,7 @@ good_msg = "CHAT: 1\nJOIN_ID: 100\nCLIENT_NAME: mark collier\nMESSAGE: hello wor
 bad_msg = "I am very bad"
 
 print tmp.parse_msg(good_msg)
-print tmp.parse_msg(good_msg).side_effect(s).response(s)
+print tmp.parse_msg(good_msg).side_effect(c, s).response(s)
 print tmp.parse_msg(bad_msg)
 
 # data ErrorMsg = Error Int String
