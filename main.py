@@ -9,32 +9,37 @@ args = parser.parse_args()
 
 student_id = 13319741
 
-def handle_client(client):
-    def parse_string(obj, s):
-        obj, rem_msg = obj.parse_message(msg)
-        if obj:
-            obj.side_effect(client, msg).response(msg)
-        return rem_msg
+def handle_client(client, server):
+    try:
+        def parse_string(obj, s):
+            obj, rem_msg = obj.parse_msg(msg)
+            if obj:
+                obj.side_effect(client, msg).response(client, server)
+            return rem_msg
 
-    msg = ''
+        msg = ''
+        while True:
+            msg += client.connection.recv(1024)
+            msg_types = [pm.KillServiceMsg(), pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
+            for obj in msg_types:
+                msg = parse_string(obj, msg)
+    finally:
+        client.connection.close()
+
+try:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.bind(('localhost', args.port_num))
+    sock.listen(1)
+
+    server = Server('localhost', args.port_num, student_id)
+
     while True:
-        msg += client.connection.recv(1024)
-        msg_types = [pm.KillServiceMsg(), pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
-        for obj in msg_types:
-            msg = parse_string(obj, msg)
+        connection, addr = sock.accept()
+        
+        client = server.add_client(connection)
+        handle_client(client, server)
 
-s = socket.socket()
-ip_addr = socket.gethostname()
-print 'ip_addr', ip_addr
-s.bind((ip_addr, args.port_num))
-
-server = Server(ip_addr, args.port_num, student_id)
-
-while True:
-    connection, addr = s.accept()
-    
-    client = server.add_client(connection)
-    handle_client(client)
-
-    connection.close()
+        connection.close()
+finally:
+    sock.close()
 

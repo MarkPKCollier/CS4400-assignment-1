@@ -2,9 +2,8 @@ from client import ChatroomClient
 import threading
 
 class Chatroom:
-    def __init__(self, name, port_num, ref):
+    def __init__(self, name, ref):
         self.name = name
-        self.port_num = port_num
         self.ref = ref
         self.clients_lock = threading.RLock()
         self.clients = []

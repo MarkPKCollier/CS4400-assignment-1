@@ -6,6 +6,9 @@ class Client:
     def disconnect(self):
         self.connection.close()
 
+    def msg(self, s):
+        self.connection.send(s) 
+
 class ChatroomClient:
     def __init__(self, client, ip_addr, port_num, name):
         self.client = client
@@ -14,4 +17,4 @@ class ChatroomClient:
         self.name = name
 
     def msg(self, s):
-        self.client.connection.send(s)
+        self.client.msg(s)
