@@ -1,6 +1,10 @@
 class Client:
-    def __init__(self, join_id):
+    def __init__(self, join_id, connection):
         self.join_id = join_id
+        self.connection = connection
+
+    def disconnect(self):
+        self.connection.close()
 
 class ChatroomClient:
     def __init__(self, client, ip_addr, port_num, name):
@@ -10,4 +14,4 @@ class ChatroomClient:
         self.name = name
 
     def msg(self, s):
-        pass
+        self.client.connection.send(s)

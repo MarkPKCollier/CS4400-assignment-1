@@ -18,8 +18,12 @@ class Msg:
 
 class KillServiceMsg(Msg):
     def parse_msg(self, s):
-        if s == "KILL_SERVICE\n":
-            return KillServiceMsg()
+        pattern = "KILL_SERVICE\n"
+        match = re.match(pattern, s)
+        if match:
+            return KillServiceMsg(), re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
         return self
@@ -29,8 +33,12 @@ class KillServiceMsg(Msg):
 
 class HelloMsg(Msg):
     def parse_msg(self, s):
-        if s == "HELO text\n":
-            return self
+        pattern = "HELO text\n"
+        match = re.match(pattern, s)
+        if match:
+            return self, re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
         return self
@@ -45,10 +53,12 @@ class JoinChatroomMsg(Msg):
         match = re.match(pattern, s)
         if match:
             self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name = match.groups()
-            return self
+            return self, re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
-        self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name)
+        self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(client, self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name)
         return self
 
     def response(self, server):
@@ -61,10 +71,12 @@ class LeaveChatroomMsg(Msg):
         match = re.match(pattern, s)
         if match:
             self.room_ref, self.join_id, self.client_name = match.groups()
-            return self
+            return self, re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
-        self.room_ref, self.join_id = server.leave_chatroom(self.room_ref, self.join_id, self.client_name)
+        self.room_ref, self.join_id = server.leave_chatroom(client, self.room_ref, self.join_id, self.client_name)
         return self
 
     def response(self, server):
@@ -77,10 +89,12 @@ class DisconnectMsg(Msg):
         match = re.match(pattern, s)
         if match:
             self.client_ip_addr, self.client_port_num, self.client_name = match.groups()
-            return self
+            return self, re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
-        server.disconnect(self.client_ip_addr, self.client_port_num, self.client_name)
+        server.disconnect(client, self.client_ip_addr, self.client_port_num, self.client_name)
         return self
 
     def response(self, server):
@@ -92,30 +106,32 @@ class ChatMsg(Msg):
         match = re.match(pattern, s)
         if match:
             self.room_ref, self.join_id, self.client_name, self.msg = match.groups()
-            return self
+            return self, re.split(pattern, match)[-1]
+        else:
+            return None, s
 
     def side_effect(self, client, server):
-        self.room_ref, self.client_name, self.msg = server.send_msg(self.room_ref, self.join_id, self.client_name, self.msg)
+        self.room_ref, self.client_name, self.msg = server.send_msg(client, self.room_ref, self.join_id, self.client_name, self.msg)
         return self
 
     def response(self, server):
         return "CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2}\n".format(
             self.room_ref, self.client_name, self.msg)
 
-from server import Server
-from client import Client
+# from server import Server
+# from client import Client
 
-c = Client(1)
-s = Server('0.0.0.0', 8080, 13319741)
+# c = Client(1)
+# s = Server('0.0.0.0', 8080, 13319741)
 
-tmp = ChatMsg()
+# tmp = ChatMsg()
 
-good_msg = "CHAT: 1\nJOIN_ID: 100\nCLIENT_NAME: mark collier\nMESSAGE: hello world\n\n\n"
-bad_msg = "I am very bad"
+# good_msg = "CHAT: 1\nJOIN_ID: 100\nCLIENT_NAME: mark collier\nMESSAGE: hello world\n\n\n"
+# bad_msg = "I am very bad"
 
-print tmp.parse_msg(good_msg)
-print tmp.parse_msg(good_msg).side_effect(c, s).response(s)
-print tmp.parse_msg(bad_msg)
+# print tmp.parse_msg(good_msg)
+# print tmp.parse_msg(good_msg).side_effect(c, s).response(s)
+# print tmp.parse_msg(bad_msg)
 
 # data ErrorMsg = Error Int String
 #             deriving (Show)
