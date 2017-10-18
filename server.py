@@ -56,6 +56,7 @@ class Server:
             pass # return chatroom doesn't exist error
         else:
             chatroom.remove_client(join_id)
+            chatroom.msg("{0} has left this chatroom.\n\n".format(client_name))
             return room_ref, join_id
 
     def disconnect(self, client, client_ip_addr, client_port_num, client_name):
