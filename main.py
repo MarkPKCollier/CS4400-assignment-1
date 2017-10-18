@@ -14,7 +14,7 @@ def handle_client(client, server):
         def parse_string(obj, s):
             obj, rem_msg = obj.parse_msg(msg)
             if obj:
-                obj.side_effect(client, msg).response(client, server)
+                obj.process(client, server)
             return rem_msg
 
         msg = ''
