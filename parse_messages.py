@@ -26,16 +26,17 @@ class KillServiceMsg(Msg):
 
 class HelloMsg(Msg):
     def parse_msg(self, s):
-        pattern = r"HELO text"
+        pattern = r"HELO (.+)\n"
         match = re.match(pattern, s)
         if match:
+            self.text = match.groups()[0]
             return self, re.split(pattern, s)[-1]
         else:
             return None, s
 
     def process(self, client, server):
-        client.msg("HELO text\nIP:{0}\nPort:{1}\nStudentID:{2}\n".format(
-            server.ip_addr, server.port_num, server.student_id))
+        client.msg("HELO {0}\nIP:{1}\nPort:{2}\nStudentID:{3}\n".format(
+            self.text, server.ip_addr, server.port_num, server.student_id))
 
 class JoinChatroomMsg(Msg):
     def parse_msg(self, s):
