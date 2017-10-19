@@ -20,7 +20,10 @@ def handle_client(client, server):
         msg = ''
         while True:
             msg += client.connection.recv(1024)
-            msg_types = [pm.KillServiceMsg(), pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
+            t, msg = pm.KillServiceMsg().parse_msg(msg)
+            if t:
+                return -1
+            msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
             for obj in msg_types:
                 msg = parse_string(obj, msg)
     finally:
@@ -37,9 +40,10 @@ try:
         connection, addr = sock.accept()
         
         client = server.add_client(connection)
-        handle_client(client, server)
+        res = handle_client(client, server)
 
-        connection.close()
+        if res == -1:
+            break
 finally:
     sock.close()
 
