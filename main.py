@@ -2,6 +2,7 @@ import parse_messages as pm
 from server import Server
 import socket
 import argparse
+import thread
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--port_num', type=int)
@@ -18,10 +19,11 @@ def handle_client(client, server):
             return rem_msg
 
         msg = ''
-        while True:
+        while server.is_server_alive():
             msg += client.connection.recv(1024)
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
+                server.kill_server()
                 return -1
             msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
             for obj in msg_types:
@@ -31,19 +33,19 @@ def handle_client(client, server):
 
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.setblocking(0)
     sock.bind(('localhost', args.port_num))
     sock.listen(1)
 
-    server = Server('localhost', args.port_num, student_id)
+    server = Server('localhost', args.port_num, student_id, sock)
 
-    while True:
-        connection, addr = sock.accept()
-        
-        client = server.add_client(connection)
-        res = handle_client(client, server)
-
-        if res == -1:
-            break
+    while server.is_server_alive():
+        try:
+            connection, addr = sock.accept()
+            client = server.add_client(connection)
+            thread.start_new_thread(handle_client, (client, server))
+        except socket.error:
+            pass
 finally:
     sock.close()
 

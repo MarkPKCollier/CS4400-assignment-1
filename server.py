@@ -4,7 +4,10 @@ import threading
 import socket
 
 class Server:
-    def __init__(self, ip_addr, port_num, student_id):
+    def __init__(self, ip_addr, port_num, student_id, socket):
+        self.sock = socket
+        self.server_alive_lock = threading.RLock()
+        self.server_alive = True
         self.ip_addr = ip_addr
         self.port_num = port_num
         self.student_id = student_id
@@ -12,6 +15,15 @@ class Server:
         self.chatrooms = {}
         self.clients_lock = threading.RLock()
         self.clients = []
+
+    def kill_server(self):
+        self.server_alive_lock.acquire()
+        self.server_alive = False
+        self.server_alive_lock.release()
+        self.sock.close()
+
+    def is_server_alive(self):
+        return self.server_alive
 
     def _get_chatroom_by_name(self, name):
         for _, chatroom in self.chatrooms.iteritems():

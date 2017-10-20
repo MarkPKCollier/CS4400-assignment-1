@@ -12,7 +12,7 @@ class Chatroom:
         self.clients.append(chatroom_client)
 
     def update_or_add_client(self, client, client_ip_addr, client_port_num, client_name):
-        self.clients_lock.acqurie()
+        self.clients_lock.acquire()
 
         matching_clients = filter(lambda client: client.client.join_id == join_id, self.clients)
         if matching_clients is not None:
