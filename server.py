@@ -36,7 +36,7 @@ class Server:
         
         if chatroom is None:
             room_ref = len(self.chatrooms) + 1
-            chatroom = Chatroom(name, self.port_num, room_ref)
+            chatroom = Chatroom(name, room_ref)
 
         self.chatrooms_lock.release()
 

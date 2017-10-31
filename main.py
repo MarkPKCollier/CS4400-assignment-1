@@ -11,6 +11,7 @@ args = parser.parse_args()
 student_id = 13319741
 
 def handle_client(client, server):
+    print 'Handling new client'
     try:
         def parse_string(obj, s):
             obj, rem_msg = obj.parse_msg(msg)
@@ -34,10 +35,10 @@ def handle_client(client, server):
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setblocking(0)
-    sock.bind(('localhost', args.port_num))
+    sock.bind(('134.226.44.50', args.port_num))
     sock.listen(1)
 
-    server = Server('localhost', args.port_num, student_id, sock)
+    server = Server('134.226.44.50', args.port_num, student_id, sock)
 
     while server.is_server_alive():
         try:
