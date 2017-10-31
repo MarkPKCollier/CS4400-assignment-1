@@ -60,7 +60,7 @@ class Server:
 
         chatroom.update_or_add_client(client, client_ip_addr, client_port_num, client_name)
 
-        return client.connection.getsockname()[1], chatroom.room_ref, client.join_id
+        return client.connection.getsockname()[1], chatroom.ref, client.join_id
 
     def leave_chatroom(self, client, room_ref, join_id, client_name):
         chatroom = self.chatrooms.get(room_ref)
