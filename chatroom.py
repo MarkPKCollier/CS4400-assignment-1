@@ -15,7 +15,7 @@ class Chatroom:
         self.clients_lock.acquire()
 
         matching_clients = filter(lambda client: client.client.join_id == join_id, self.clients)
-        if matching_clients is not None:
+        if matching_clients:
             client = matching_clients[0]
             client.ip_addr = client_ip_addr
             client.port_num = client_port_num
