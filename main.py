@@ -22,6 +22,7 @@ def handle_client(client, server):
         msg = ''
         while server.is_server_alive():
             msg += client.connection.recv(1024)
+            print 'msg:', msg
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
                 server.kill_server()
