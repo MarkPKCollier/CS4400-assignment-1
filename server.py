@@ -37,6 +37,7 @@ class Server:
         if chatroom is None:
             room_ref = len(self.chatrooms) + 1
             chatroom = Chatroom(name, room_ref)
+            self.chatrooms[room_ref] = chatroom
 
         self.chatrooms_lock.release()
 
@@ -56,6 +57,7 @@ class Server:
     def join_chatroom(self, client, chatroom_name, client_ip_addr, client_port_num, client_name):
         chatroom = self._get_chatroom_by_name(chatroom_name)
         if chatroom is None:
+            print 'Creating chatroom with name:', chatroom_name
             chatroom = self._create_chatroom(chatroom_name)
 
         chatroom.update_or_add_client(client, client_ip_addr, client_port_num, client_name)
