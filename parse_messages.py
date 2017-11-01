@@ -103,9 +103,9 @@ class ChatMsg(Msg):
 
     def process(self, client, server):
         self.room_ref, self.client_name, self.msg = server.send_msg(client, self.room_ref, self.join_id, self.client_name, self.msg)
-        chatroom = server.chatrooms[self.room_ref]
-        chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2}\n".format(
-            self.room_ref, self.client_name, self.msg))
+        # chatroom = server.chatrooms[self.room_ref]
+        # chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2}\n".format(
+        #     self.room_ref, self.client_name, self.msg))
 
 # from server import Server
 # from client import Client
