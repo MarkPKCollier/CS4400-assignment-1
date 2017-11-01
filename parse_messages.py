@@ -71,8 +71,11 @@ class LeaveChatroomMsg(Msg):
 
     def process(self, client, server):
         self.room_ref, self.join_id = server.leave_chatroom(client, self.room_ref, self.join_id, self.client_name)
-        client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
-            self.room_ref, self.join_id))
+        # client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
+        #     self.room_ref, self.join_id))
+
+        # chatroom = server.chatrooms[self.room_ref]
+        # chatroom.msg("{0} has left this chatroom.\n\n".format(self.client_name))
 
 class DisconnectMsg(Msg):
     def parse_msg(self, s):
