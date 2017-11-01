@@ -51,14 +51,14 @@ class JoinChatroomMsg(Msg):
     def process(self, client, server):
         print 'processing join chatroom'
         self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(client,
-            self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name)
-        client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
-            self.chatroom_name, server.ip_addr, self.chatroom_port_num, self.room_ref, self.join_id))
-        print 'Looking for chatroom with name:', self.chatroom_name
-        print 'All chatrooms:', server.chatrooms
-        chatroom = server._get_chatroom_by_name(self.chatroom_name)
-        chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
-            self.room_ref, self.client_name, self.client_name))
+            server, self.chatroom_name, self.client_ip_addr, self.client_port_num,
+            self.client_name)
+        # chatroom = server.chatrooms[self.room_ref]
+
+        # client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
+        #     self.chatroom_name, server.ip_addr, self.chatroom_port_num, self.room_ref, self.join_id))
+        # chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
+        #     self.room_ref, self.client_name, self.client_name))
 
 class LeaveChatroomMsg(Msg):
     def parse_msg(self, s):

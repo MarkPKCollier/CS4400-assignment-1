@@ -11,18 +11,24 @@ class Chatroom:
     def add_client(self, chatroom_client):
         self.clients.append(chatroom_client)
 
-    def update_or_add_client(self, client, client_ip_addr, client_port_num, client_name):
+    def update_or_add_client(self, client, server, client_ip_addr, client_port_num, client_name):
         self.clients_lock.acquire()
 
         matching_clients = filter(lambda client: client.name == client_name, self.clients)
         if matching_clients:
-            client = matching_clients[0]
-            client.ip_addr = client_ip_addr
-            client.port_num = client_port_num
-            client.name = client_name
+            client_ = matching_clients[0]
+            client_.ip_addr = client_ip_addr
+            client_.port_num = client_port_num
+            client_.name = client_name
         else:
-            client = ChatroomClient(client, client_ip_addr, client_port_num, client_name)
-            self.add_client(client)
+            client_ = ChatroomClient(client, client_ip_addr, client_port_num, client_name)
+            self.add_client(client_)
+
+        client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
+            self.name, server.ip_addr, client.connection.getsockname()[1],
+            self.ref, client.join_id))
+        chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
+            self.room_ref, self.client_name, self.client_name))
 
         self.clients_lock.release()
 

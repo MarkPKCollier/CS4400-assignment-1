@@ -54,13 +54,13 @@ class Server:
 
         return client
 
-    def join_chatroom(self, client, chatroom_name, client_ip_addr, client_port_num, client_name):
+    def join_chatroom(self, client, server, chatroom_name, client_ip_addr, client_port_num, client_name):
         chatroom = self._get_chatroom_by_name(chatroom_name)
         if chatroom is None:
             print 'Creating chatroom with name:', chatroom_name
             chatroom = self._create_chatroom(chatroom_name)
 
-        chatroom.update_or_add_client(client, client_ip_addr, client_port_num, client_name)
+        chatroom.update_or_add_client(client, server, client_ip_addr, client_port_num, client_name)
 
         return client.connection.getsockname()[1], chatroom.ref, client.join_id
 
