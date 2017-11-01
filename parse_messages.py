@@ -17,7 +17,6 @@ class KillServiceMsg(Msg):
         pattern = r".*\nKILL_SERVICE\n"
         match = re.match(pattern, s)
         if match:
-            print 'parsed kill service'
             return True, re.split(pattern, s)[-1]
         else:
             return False, s
@@ -50,16 +49,9 @@ class JoinChatroomMsg(Msg):
             return None, s
 
     def process(self, client, server):
-        print 'processing join chatroom'
         self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(client,
             server, self.chatroom_name, self.client_ip_addr, self.client_port_num,
             self.client_name)
-        # chatroom = server.chatrooms[self.room_ref]
-
-        # client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
-        #     self.chatroom_name, server.ip_addr, self.chatroom_port_num, self.room_ref, self.join_id))
-        # chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
-        #     self.room_ref, self.client_name, self.client_name))
 
 class LeaveChatroomMsg(Msg):
     def parse_msg(self, s):
@@ -73,11 +65,6 @@ class LeaveChatroomMsg(Msg):
 
     def process(self, client, server):
         self.room_ref, self.join_id = server.leave_chatroom(client, self.room_ref, self.join_id, self.client_name)
-        # client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
-        #     self.room_ref, self.join_id))
-
-        # chatroom = server.chatrooms[self.room_ref]
-        # chatroom.msg("{0} has left this chatroom.\n\n".format(self.client_name))
 
 class DisconnectMsg(Msg):
     def parse_msg(self, s):
@@ -91,7 +78,6 @@ class DisconnectMsg(Msg):
 
     def process(self, client, server):
         for chatroom in filter(lambda chatroom: any(map(lambda client_: client.join_id == client_.client.join_id, chatroom.clients)), server.chatrooms.values()):
-            print 'leaving chatroom', chatroom
             server.leave_chatroom(client, chatroom.ref, client.join_id, self.client_name, disconnect=True)
         server.disconnect(client, self.client_ip_addr, self.client_port_num, self.client_name)
 
@@ -107,25 +93,4 @@ class ChatMsg(Msg):
 
     def process(self, client, server):
         self.room_ref, self.client_name, self.msg = server.send_msg(client, self.room_ref, self.join_id, self.client_name, self.msg)
-        # chatroom = server.chatrooms[self.room_ref]
-        # chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2}\n".format(
-        #     self.room_ref, self.client_name, self.msg))
-
-# from server import Server
-# from client import Client
-
-# c = Client(1)
-# s = Server('0.0.0.0', 8080, 13319741)
-
-# tmp = ChatMsg()
-
-# good_msg = "CHAT: 1\nJOIN_ID: 100\nCLIENT_NAME: mark collier\nMESSAGE: hello world\n\n\n"
-# bad_msg = "I am very bad"
-
-# print tmp.parse_msg(good_msg)
-# print tmp.parse_msg(good_msg).side_effect(c, s).response(s)
-# print tmp.parse_msg(bad_msg)
-
-# data ErrorMsg = Error Int String
-#             deriving (Show)
 

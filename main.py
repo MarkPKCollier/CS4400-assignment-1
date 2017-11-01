@@ -3,6 +3,9 @@ from server import Server
 import socket
 import argparse
 import thread
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--port_num', type=int)
@@ -11,7 +14,6 @@ args = parser.parse_args()
 student_id = 13319741
 
 def handle_client(client, server):
-    print 'Handling new client'
     try:
         def parse_string(obj, s):
             obj, rem_msg = obj.parse_msg(msg)
@@ -22,10 +24,9 @@ def handle_client(client, server):
         msg = ''
         while server.is_server_alive():
             msg += client.connection.recv(1024)
-            print 'msg:', msg
+            logging.info('msg: {0}'.format(msg))
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
-                print 'server.kill_server()'
                 server.kill_server()
             msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
             for obj in msg_types:
