@@ -93,7 +93,7 @@ class DisconnectMsg(Msg):
 
 class ChatMsg(Msg):
     def parse_msg(self, s):
-        pattern = r"CHAT: (\d+)\nJOIN_ID: (\d+)\nCLIENT_NAME: (.+)\nMESSAGE: (.+\n\n)\n$"
+        pattern = r"CHAT: (\d+)\nJOIN_ID: (\d+)\nCLIENT_NAME: (.+)\nMESSAGE: (.+\n\n)$"
         match = re.match(pattern, s)
         if match:
             self.room_ref, self.join_id, self.client_name, self.msg = match.groups()
