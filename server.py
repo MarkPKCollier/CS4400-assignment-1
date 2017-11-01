@@ -35,7 +35,7 @@ class Server:
         chatroom = self._get_chatroom_by_name(name)
         
         if chatroom is None:
-            room_ref = len(self.chatrooms) + 1
+            room_ref = str(len(self.chatrooms) + 1)
             chatroom = Chatroom(name, room_ref)
             self.chatrooms[room_ref] = chatroom
 
