@@ -43,4 +43,5 @@ class Chatroom:
 
     def msg(self, s):
         for client in self.clients:
+            print 'sending msg:', s, 'to :', client.name
             client.msg(s)
