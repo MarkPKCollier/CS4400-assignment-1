@@ -49,6 +49,7 @@ class JoinChatroomMsg(Msg):
             return None, s
 
     def process(self, client, server):
+        print 'processing join chatroom'
         self.chatroom_port_num, self.room_ref, self.join_id = server.join_chatroom(client,
             self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name)
         client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
