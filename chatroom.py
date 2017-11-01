@@ -36,6 +36,8 @@ class Chatroom:
         self.clients_lock.acquire()
 
         print 'clients before removal', self.clients
+        print 'join id', join_id, type(join_id)
+        print map(lambda client: (client.client.join_id, type(client.client.join_id)), self.clients)
         self.clients = filter(lambda client: client.client.join_id != join_id, self.clients)
         # print 'clients before removal', self.clients
         # for client in matching_clients:
