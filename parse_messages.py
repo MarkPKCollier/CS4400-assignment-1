@@ -17,6 +17,7 @@ class KillServiceMsg(Msg):
         pattern = r"KILL_SERVICE\n"
         match = re.match(pattern, s)
         if match:
+            print 'parsed kill service'
             return True, re.split(pattern, s)[-1]
         else:
             return False, s
