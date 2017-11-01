@@ -35,10 +35,12 @@ class Chatroom:
     def remove_client(self, join_id):
         self.clients_lock.acquire()
 
-        matching_clients = filter(lambda client: client.client.join_id == join_id, self.clients)
         print 'clients before removal', self.clients
-        for client in matching_clients:
-            self.clients.remove(client)
+        self.clients = filter(lambda client: client.client.join_id != join_id, self.clients)
+        # print 'clients before removal', self.clients
+        # for client in matching_clients:
+        #     print 'client to be removed', client
+        #     self.clients.remove(client)
         print 'clients after removal', self.clients
 
         self.clients_lock.release()
