@@ -17,9 +17,9 @@ class KillServiceMsg(Msg):
         pattern = r"KILL_SERVICE\n"
         match = re.match(pattern, s)
         if match:
-            return KillServiceMsg(), re.split(pattern, s)[-1]
+            return True, re.split(pattern, s)[-1]
         else:
-            return None, s
+            return False, s
 
     def process(self, client, server):
         pass

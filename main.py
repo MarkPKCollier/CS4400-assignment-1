@@ -29,6 +29,7 @@ def handle_client(client, server):
             print 'msg:', msg
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
+                print 'server.kill_server()'
                 server.kill_server()
                 print 'raising kill_server'
                 raise KillServer()
