@@ -30,6 +30,9 @@ def handle_client(client, server):
             msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
             for obj in msg_types:
                 msg = parse_string(obj, msg)
+    except Exception:
+        import traceback
+        print traceback.format_exc()
     finally:
         client.connection.close()
 
