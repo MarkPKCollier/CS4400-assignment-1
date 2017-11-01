@@ -56,7 +56,8 @@ class JoinChatroomMsg(Msg):
         print 'Looking for chatroom with name:', self.chatroom_name
         print 'All chatrooms:', server.chatrooms
         chatroom = server._get_chatroom_by_name(self.chatroom_name)
-        chatroom.msg("{0} has joined this chatroom.\n\n".format(self.client_name))
+        chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
+            self.room_ref, self.client_name, self.client_name))
 
 class LeaveChatroomMsg(Msg):
     def parse_msg(self, s):
