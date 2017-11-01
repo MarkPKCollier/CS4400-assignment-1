@@ -14,7 +14,7 @@ class Chatroom:
     def update_or_add_client(self, client, client_ip_addr, client_port_num, client_name):
         self.clients_lock.acquire()
 
-        matching_clients = filter(lambda client: client.client.join_id == join_id, self.clients)
+        matching_clients = filter(lambda client: client.name == client_name, self.clients)
         if matching_clients:
             client = matching_clients[0]
             client.ip_addr = client_ip_addr
