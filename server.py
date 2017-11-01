@@ -64,15 +64,16 @@ class Server:
 
         return client.connection.getsockname()[1], chatroom.ref, client.join_id
 
-    def leave_chatroom(self, client, room_ref, join_id, client_name):
+    def leave_chatroom(self, client, room_ref, join_id, client_name, disconnect=False):
         print 'looking for room:', room_ref
         print 'with chatrooms:', self.chatrooms
         chatroom = self.chatrooms.get(room_ref)
         if not chatroom:
             pass # return chatroom doesn't exist error
         else:
-            client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
-                room_ref, join_id))
+            if not disconnect:
+                client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
+                    room_ref, join_id))
             chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has left this chatroom.\n\n".format(
                 room_ref, client_name, client_name))
             chatroom.remove_client(join_id)
