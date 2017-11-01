@@ -40,7 +40,7 @@ class HelloMsg(Msg):
 
 class JoinChatroomMsg(Msg):
     def parse_msg(self, s):
-        pattern = r"JOIN_CHATROOM: (.+)\nCLIENT_IP: (.+)\nPORT: (\d)+\nCLIENT_NAME: (.+)\n\n$"
+        pattern = r"JOIN_CHATROOM: (.+)\nCLIENT_IP: (.+)\nPORT: (\d)+\nCLIENT_NAME: (.+)\n$"
         match = re.match(pattern, s)
         if match:
             self.chatroom_name, self.client_ip_addr, self.client_port_num, self.client_name = match.groups()
