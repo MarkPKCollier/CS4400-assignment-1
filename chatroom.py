@@ -27,7 +27,7 @@ class Chatroom:
         client.msg("JOINED_CHATROOM: {0}\nSERVER_IP: {1}\nPORT: {2}\nROOM_REF: {3}\nJOIN_ID: {4}\n".format(
             self.name, server.ip_addr, client.connection.getsockname()[1],
             self.ref, client.join_id))
-        chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
+        self.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has joined this chatroom.\n\n".format(
             self.room_ref, self.client_name, self.client_name))
 
         self.clients_lock.release()
