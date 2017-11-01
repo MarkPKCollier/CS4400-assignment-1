@@ -13,6 +13,13 @@ args = parser.parse_args()
 
 student_id = 13319741
 
+s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+s.connect(("8.8.8.8", 80))
+my_ip = s.getsockname()[0]
+s.close()
+
+logging.info('Starting server on: {0}'.format(my_ip))
+
 def handle_client(client, server):
     try:
         def parse_string(obj, s):
@@ -37,10 +44,10 @@ def handle_client(client, server):
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setblocking(0)
-    sock.bind(('134.226.44.50', args.port_num))
+    sock.bind((my_ip, args.port_num))
     sock.listen(1)
 
-    server = Server('134.226.44.50', args.port_num, student_id, sock)
+    server = Server(my_ip, args.port_num, student_id, sock)
 
     while server.is_server_alive():
         try:
