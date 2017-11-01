@@ -46,7 +46,7 @@ class Server:
     def add_client(self, connection):
         self.clients_lock.acquire()
 
-        join_id = len(self.clients)
+        join_id = str(len(self.clients))
         client = Client(join_id, connection)
         self.clients.append(client)
 
