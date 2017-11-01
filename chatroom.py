@@ -48,6 +48,7 @@ class Chatroom:
         self.clients_lock.release()
 
     def msg(self, s):
+        print 'want to send msg:', s
         for client in self.clients:
             print 'sending msg:', s, 'to :', client.name
             client.msg(s)
