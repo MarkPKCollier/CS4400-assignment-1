@@ -30,6 +30,7 @@ def handle_client(client, server):
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
                 server.kill_server()
+                print 'raising kill_server'
                 raise KillServer()
             msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
             for obj in msg_types:
@@ -51,6 +52,7 @@ try:
             client = server.add_client(connection)
             thread.start_new_thread(handle_client, (client, server))
         except KillServer:
+            print 'killing the server'
             break
         except socket.error:
             pass
