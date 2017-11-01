@@ -73,7 +73,8 @@ class Server:
         else:
             client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
                 room_ref, join_id))
-            chatroom.msg("{0} has left this chatroom.\n\n".format(client_name))
+            chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2} has left this chatroom.\n\n".format(
+                room_ref, client_name, client_name))
             chatroom.remove_client(join_id)
             return room_ref, join_id
 
