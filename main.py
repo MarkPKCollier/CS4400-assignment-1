@@ -10,6 +10,10 @@ args = parser.parse_args()
 
 student_id = 13319741
 
+class KillServer(Exception):
+    def __init__(self):
+        Exception.__init__(self)
+
 def handle_client(client, server):
     print 'Handling new client'
     try:
@@ -46,6 +50,8 @@ try:
             connection, addr = sock.accept()
             client = server.add_client(connection)
             thread.start_new_thread(handle_client, (client, server))
+        except KillServer:
+            break
         except socket.error:
             pass
 finally:
