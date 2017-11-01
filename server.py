@@ -65,6 +65,8 @@ class Server:
         return client.connection.getsockname()[1], chatroom.ref, client.join_id
 
     def leave_chatroom(self, client, room_ref, join_id, client_name):
+        print 'looking for room:', room_ref
+        print 'with chatrooms:', self.chatrooms
         chatroom = self.chatrooms.get(room_ref)
         if not chatroom:
             pass # return chatroom doesn't exist error
