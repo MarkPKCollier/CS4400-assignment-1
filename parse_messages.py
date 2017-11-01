@@ -89,7 +89,7 @@ class DisconnectMsg(Msg):
             return None, s
 
     def process(self, client, server):
-        for chatroom in filter(lambda chatroom: any(lambda client_: client.client.join_id == client_.client.join_id, chatroom.clients), server.chatrooms.values()):
+        for chatroom in filter(lambda chatroom: any(map(lambda client_: client.client.join_id == client_.client.join_id, chatroom.clients)), server.chatrooms.values()):
             print 'leaving chatroom', chatroom
             server.leave_chatroom(client, chatroom.ref, client.client.join_id, self.client_name)
         server.disconnect(client, self.client_ip_addr, self.client_port_num, self.client_name)
