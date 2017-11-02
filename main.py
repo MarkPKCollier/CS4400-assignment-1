@@ -44,7 +44,7 @@ def handle_client(client, server):
 try:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setblocking(0)
-    sock.bind((my_ip, args.port_num))
+    sock.bind(('localhost', args.port_num))
     sock.listen(1)
 
     server = Server(my_ip, args.port_num, student_id, sock)
