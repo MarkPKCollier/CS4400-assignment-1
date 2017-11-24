@@ -15,7 +15,7 @@ class Msg:
 
 class KillServiceMsg(Msg):
     def parse_msg(self, s):
-        pattern = r"KILL_SERVICE\n"
+        pattern = r"KILL_SERVICE\n\n"
         match = re.match(pattern, s)
         if match:
             return True, re.split(pattern, s)[-1]
