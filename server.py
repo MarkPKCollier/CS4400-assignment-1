@@ -66,7 +66,7 @@ class Server:
     def leave_chatroom(self, client, room_ref, join_id, client_name, disconnect=False):
         chatroom = self.chatrooms.get(room_ref)
         if not chatroom:
-            pass # return chatroom doesn't exist error
+            client.msg("ERROR_CODE: 100\nERROR_DESCRIPTION: chatroom doesn't exist\n")
         else:
             if not disconnect:
                 client.msg("LEFT_CHATROOM: {0}\nJOIN_ID: {1}\n".format(
@@ -82,7 +82,7 @@ class Server:
     def send_msg(self, client, room_ref, join_id, client_name, msg):
         chatroom = self.chatrooms.get(room_ref)
         if not chatroom:
-            pass # return chatroom doesn't exist error
+            client.msg("ERROR_CODE: 100\nERROR_DESCRIPTION: chatroom doesn't exist\n")
         else:
             chatroom.msg("CHAT: {0}\nCLIENT_NAME: {1}\nMESSAGE: {2}".format(
                 room_ref, client_name, msg))
