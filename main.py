@@ -39,7 +39,7 @@ def handle_client(client, server):
             t, msg = pm.KillServiceMsg().parse_msg(msg)
             if t:
                 server.kill_server()
-            msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg()]
+            msg_types = [pm.HelloMsg(), pm.JoinChatroomMsg(), pm.LeaveChatroomMsg(), pm.DisconnectMsg(), pm.ChatMsg(), pm.ErrorMsg()]
             for obj in msg_types:
                 msg = parse_string(obj, msg)
     finally:

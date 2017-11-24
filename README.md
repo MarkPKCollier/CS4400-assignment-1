@@ -17,3 +17,5 @@ This solution always get's 100% on the provided test server.
 ## Errors
 
 The error code 100 is used to signify that a specified chatroom does not exist.
+
+The error code 200 is used to signify that a sent message was illegal.
