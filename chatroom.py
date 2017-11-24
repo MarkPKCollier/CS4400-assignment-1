@@ -35,6 +35,7 @@ class Chatroom:
     def remove_client(self, join_id):
         self.clients_lock.acquire()
 
+        # retain all clients other than that specified by the join_id
         self.clients = filter(lambda client: client.client.join_id != join_id, self.clients)
 
         self.clients_lock.release()

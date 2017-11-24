@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
 import re
 
+# abstract class for message types
 class Msg:
     __metaclass__ = ABCMeta
 

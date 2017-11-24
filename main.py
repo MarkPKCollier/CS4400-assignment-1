@@ -13,6 +13,8 @@ args = parser.parse_args()
 
 student_id = 13319741
 
+# instead of hard coding my public ip I discover it by making an external connection
+# if you wish to hard code an ip address please replace this code
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 s.connect(("8.8.8.8", 80))
 my_ip = s.getsockname()[0]
@@ -21,8 +23,10 @@ s.close()
 logging.info('Starting server on: {0}'.format(my_ip))
 
 def handle_client(client, server):
+    '''A function which handles all messages from a single client.'''
     try:
         def parse_string(obj, s):
+            '''Parse a string for a potential message and return the remaining string.'''
             obj, rem_msg = obj.parse_msg(msg)
             if obj:
                 obj.process(client, server)
@@ -42,6 +46,7 @@ def handle_client(client, server):
         client.connection.close()
 
 try:
+    # socket setup
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setblocking(0)
     sock.bind((my_ip, args.port_num))
@@ -51,6 +56,7 @@ try:
 
     while server.is_server_alive():
         try:
+            # accept new connections and hand them off to a new thread
             connection, addr = sock.accept()
             client = server.add_client(connection)
             thread.start_new_thread(handle_client, (client, server))
