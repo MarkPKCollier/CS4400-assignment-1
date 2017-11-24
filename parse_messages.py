@@ -105,5 +105,6 @@ class ErrorMsg(Msg):
             return None, s
 
     def process(self, client, server):
-        client.msg("ERROR_CODE: 200\nERROR_DESCRIPTION: illegal message\n")
+        pass
+        # client.msg("ERROR_CODE: 200\nERROR_DESCRIPTION: illegal message\n")
 
