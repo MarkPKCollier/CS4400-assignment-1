@@ -5,6 +5,7 @@ class Chatroom:
     def __init__(self, name, ref):
         self.name = name
         self.ref = ref
+        # I implement the monitor locking pattern so each object maintains it's own locks internally
         self.clients_lock = threading.RLock()
         self.clients = []
 

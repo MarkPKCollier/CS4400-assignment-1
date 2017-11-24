@@ -11,3 +11,5 @@ I use regular expressions to parse the incoming messages.
 I take an object orientated approach to my design with classes for message types, the server, clients and the chatrooms.
 
 This enables me to implement the monitor locking pattern, with each object maintaining locks internally and exposing methods which transparently maintain thread safe usage.
+
+This solution always get's 100% on the provided test server.

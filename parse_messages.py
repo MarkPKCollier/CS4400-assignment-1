@@ -95,3 +95,15 @@ class ChatMsg(Msg):
     def process(self, client, server):
         self.room_ref, self.client_name, self.msg = server.send_msg(client, self.room_ref, self.join_id, self.client_name, self.msg)
 
+class ErrorMsg(Msg):
+    def parse_msg(self, s):
+        pattern = r"(.+)\n"
+        match = re.match(pattern, s)
+        if match:
+            return self, re.split(pattern, s)[-1]
+        else:
+            return None, s
+
+    def process(self, client, server):
+        client.msg("ERROR_CODE: 100\nERROR_DESCRIPTION: illegal message\n"
+

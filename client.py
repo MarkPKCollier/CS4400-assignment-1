@@ -1,3 +1,5 @@
+# some simple classes for clients and clients in chatrooms
+
 class Client:
     def __init__(self, join_id, connection):
         self.join_id = join_id
