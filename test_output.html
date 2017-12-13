@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0069)https://www.scss.tcd.ie/Stephen.Barrett/teaching/CS4400/chat_test.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Stephen Barrett</title>
+    
+    <link rel="stylesheet" href="./test_output_files/style.css" type="text/css" media="screen">
+  </head>
+  
+  <body>
+    <div id="page">
+      
+      <a href="http://www.tcd.ie/"><img src="./test_output_files/tcdLogo.png"></a>
+      <div class="h"><div class="h-inner">
+	  <h1>Prof Stephen Barrett</h1>
+	  <p class="structure"><a href="http://scss.tcd.ie/">School of Computer Science &amp; Statistics</a></p>
+      </div></div>
+      <div class="sitemenu">
+	<p><a href="https://www.scss.tcd.ie/Stephen.Barrett/">Home</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.scss.tcd.ie/Stephen.Barrett/research.html">Research</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.scss.tcd.ie/Stephen.Barrett/teaching">Teaching</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.scss.tcd.ie/Stephen.Barrett/publications.php">Publications</a>&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.scss.tcd.ie/Stephen.Barrett/contact.html">Contact</a></p>
+      </div>
+      
+      <div id="content" class="widecolumn">
+	<table width="800" border="0" cellpadding="3" cellspacing="0">
+	  <tbody><tr>
+	    <td>
+	      <div align="justify">
+                                                                                             
+              <h3>Thank you for your submission.</h3>
+
+Test executed by user: mcollier
+    <div>
+<form method="post" action="https://www.scss.tcd.ie/Stephen.Barrett/teaching/CS4400/chat_test.php">
+<input type="hidden" name="submissionname" value="CHAT_TEST">
+<input type="hidden" name="gitrepository" value="none"><br>
+<input type="hidden" name="hostname" value="134.226.44.50"><br>
+<input type="hidden" name="port" value="8080"><br>
+<input type="hidden" name="studentname" value="Mark Collier"><br>
+<input type="hidden" name="studentid" value="13319741"><br>
+<input type="hidden" name="email" value="mcollier@tcd.ie"><br>
+<input type="submit" value="Resubmit test">
+</form>
+    </div>
+
+
+    <div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing base protocol.</b><br>BEGINNING SOCKET TEST: 2017/12/13 09:12:50pm<br>Connecting to host: 134.226.44.50 port: 8080 <div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div>Sent HELO Message to Server:<pre style="color:gray;border:1px dashed">HELO BASE_TEST
+</pre>Recieved Message from server: <pre style="color:gray;border:1px dashed">HELO BASE_TEST
+IP:134.226.44.50
+Port:8080
+StudentID:13319741
+</pre>Message has 5 lines (we expect at least 4). <br>First String Correct:HELO BASE_TEST
+<br>Second string is correct form IP:XXXX.<br>IP address is correct: 134.226.44.50<br>Port number is correct: 8080<br>Third string reports StudentID as 13319741<br><b style="color:green">baseline message response OK.</b><br>Sending unknown message to server. It should handle this.<br><b style="color:green">Tests Successful.</b></div><h3>Creating first client connection</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><h3>Testing Leaving </h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing leaving on chatroom by client1. (Socket Resource id #7)</b><br>Sending Message to Server:<pre style="color:gray;border:1px dashed">LEAVE_CHATROOM: 1
+JOIN_ID: 1
+CLIENT_NAME: client1
+ </pre><b style="color:green">Send succeeded.</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">LEFT_CHATROOM: 1
+</pre>Room Ref is correct:  1
+<br>JOIN ID is correct:  1
+<br><b style="color:green">Leave Test Successful.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client1 (Socket Resource id #7)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 1
+</pre>Room Ref is correct:  1
+<br>Client name has correct form:  client1
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client1 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><h3>Test join multiple rooms</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room2
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room2<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  2
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><h3>Test leaving multiple chatrooms</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing leaving on chatroom by client1. (Socket Resource id #7)</b><br>Sending Message to Server:<pre style="color:gray;border:1px dashed">LEAVE_CHATROOM: 1
+JOIN_ID: 1
+CLIENT_NAME: client1
+ </pre><b style="color:green">Send succeeded.</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">LEFT_CHATROOM: 1
+</pre>Room Ref is correct:  1
+<br>JOIN ID is correct:  1
+<br><b style="color:green">Leave Test Successful.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client1 (Socket Resource id #7)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 1
+</pre>Room Ref is correct:  1
+<br>Client name has correct form:  client1
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client1 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing leaving on chatroom by client1. (Socket Resource id #7)</b><br>Sending Message to Server:<pre style="color:gray;border:1px dashed">LEAVE_CHATROOM: 2
+JOIN_ID: 1
+CLIENT_NAME: client1
+ </pre><b style="color:green">Send succeeded.</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">LEFT_CHATROOM: 2
+</pre>Room Ref is correct:  2
+<br>JOIN ID is correct:  1
+<br><b style="color:green">Leave Test Successful.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client1 (Socket Resource id #7)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 2
+</pre>Room Ref is correct:  2
+<br>Client name has correct form:  client1
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client1 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><h3>Testing multiple clients with single room</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div>Creating second client connection<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client2. (Socket Resource id #8)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  2
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><h3>Test multiple clients leaving one room</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing leaving on chatroom by client2. (Socket Resource id #8)</b><br>Sending Message to Server:<pre style="color:gray;border:1px dashed">LEAVE_CHATROOM: 1
+JOIN_ID: 2
+CLIENT_NAME: client2
+ </pre><b style="color:green">Send succeeded.</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">LEFT_CHATROOM: 1
+</pre>Room Ref is correct:  1
+<br>JOIN ID is correct:  2
+<br><b style="color:green">Leave Test Successful.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client2 (Socket Resource id #8)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 1
+</pre>Room Ref is correct:  1
+<br>Client name has correct form:  client2
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client2 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client2 (Socket Resource id #7)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 1
+</pre>Room Ref is correct:  1
+<br>Client name has correct form:  client2
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client2 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing leaving on chatroom by client1. (Socket Resource id #7)</b><br>Sending Message to Server:<pre style="color:gray;border:1px dashed">LEAVE_CHATROOM: 1
+JOIN_ID: 1
+CLIENT_NAME: client1
+ </pre><b style="color:green">Send succeeded.</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">LEFT_CHATROOM: 1
+</pre>Room Ref is correct:  1
+<br>JOIN ID is correct:  1
+<br><b style="color:green">Leave Test Successful.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing for receipt of leaving message regarding client1 (Socket Resource id #7)</b><br>Recieved Message from server: <pre style="color:gray;border:1px dashed">CHAT: 1
+</pre>Room Ref is correct:  1
+<br>Client name has correct form:  client1
+<br>Full message recieved: <pre style="color:gray;border:1px dashed"> client1 has left this chatroom.
+
+
+</pre><b style="color:green">Receipt of message successful.</b><br></div><h3>Testing multiple clients with multiple rooms</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client2. (Socket Resource id #8)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  2
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div>Creating third client connection<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client3. (Socket Resource id #9)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  3
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client3. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client3
+<br>Message form is correct:   client3 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client3 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client3. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client3
+<br>Message form is correct:   client3 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client3 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client3
+<br>Message form is correct:   client3 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client3 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #7)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room2
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room2<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  2
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  1
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client3. (Socket Resource id #9)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room2
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room2<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  2
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  3
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client3. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client3
+<br>Message form is correct:   client3 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client3 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client3
+<br>Message form is correct:   client3 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client3 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div>Creating fourth client connection<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client4. (Socket Resource id #10)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room2
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room2<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  2
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  4
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client4. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client4
+<br>Message form is correct:   client4 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client4 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client4. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client4
+<br>Message form is correct:   client4 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client4 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client4. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client4
+<br>Message form is correct:   client4 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client4 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><h3>Testing Messaging </h3><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client1</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 1
+JOIN_ID: 1
+CLIENT_NAME: client1
+MESSAGE: hello world from client 1
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client1
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 1
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client1. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client1
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 1
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client1. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client1
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 1
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client1. (Socket Resource id #10)</b><br><b style="color:green">Nothing to read on Resource id #10 socket. This is correct.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client2</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 1
+JOIN_ID: 1
+CLIENT_NAME: client2
+MESSAGE: hello world from client 2
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client2. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client2
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 2
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client2. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client2
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 2
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client2. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client2
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 2
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client2. (Socket Resource id #10)</b><br><b style="color:green">Nothing to read on Resource id #10 socket. This is correct.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client3</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 1
+JOIN_ID: 3
+CLIENT_NAME: client3
+MESSAGE: hello world from client 3
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client3. (Socket Resource id #10)</b><br><b style="color:green">Nothing to read on Resource id #10 socket. This is correct.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client3</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 2
+JOIN_ID: 3
+CLIENT_NAME: client3
+MESSAGE: hello world from client 3
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client3. (Socket Resource id #8)</b><br><b style="color:green">Nothing to read on Resource id #8 socket. This is correct.</b><br></div><h3>Testing Disconnections</h3><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing sending message to server by client1. (Socket Resource id #7)</b><br>Sending Message to Server:<pre style="border 1px dashed;color:gray">DISCONNECT: 0
+PORT: 0
+CLIENT_NAME: client1
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #7)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client3</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 1
+JOIN_ID: 3
+CLIENT_NAME: client3
+MESSAGE: hello world from client 3
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client3
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 3
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client3. (Socket Resource id #10)</b><br><b style="color:green">Nothing to read on Resource id #10 socket. This is correct.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client3. (Socket Resource id #7)</b><br>Nothing to read on Resource id #7 socket as expected.<br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing sending message to server by client2. (Socket Resource id #8)</b><br>Sending Message to Server:<pre style="border 1px dashed;color:gray">DISCONNECT: 0
+PORT: 0
+CLIENT_NAME: client2
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client2. (Socket Resource id #8)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client2 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client2. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client2 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing sending message to server by client3. (Socket Resource id #9)</b><br>Sending Message to Server:<pre style="border 1px dashed;color:gray">DISCONNECT: 0
+PORT: 0
+CLIENT_NAME: client3
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client3
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client3 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client3. (Socket Resource id #9)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client3
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client3 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client3. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client3
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client3 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client4</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 2
+JOIN_ID: 4
+CLIENT_NAME: client4
+MESSAGE: hello world from client 4
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client4. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client4
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 4
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client4. (Socket Resource id #7)</b><br>Nothing to read on Resource id #7 socket as expected.<br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client4. (Socket Resource id #8)</b><br>Nothing to read on Resource id #8 socket as expected.<br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for no receipt of message from client4. (Socket Resource id #9)</b><br>Nothing to read on Resource id #9 socket as expected.<br></div>Reconnecting first client<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #11)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room2
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room2<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  2
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  5
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #11)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client4</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 2
+JOIN_ID: 4
+CLIENT_NAME: client4
+MESSAGE: hello world from client 4
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client4. (Socket Resource id #11)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client4
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 4
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client4. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>clientname is correct:  client4
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 4
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing sending message to server by client1. (Socket Resource id #11)</b><br>Sending Message to Server:<pre style="border 1px dashed;color:gray">DISCONNECT: 0
+PORT: 0
+CLIENT_NAME: client1
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #11)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of disconnection message regarding client1. (Socket Resource id #10)</b><br>Recieved Message from server: CHAT: 2
+<br>Room Ref is correct:  2
+<br>Clientname is correct:  client1
+<br>Full message recieved: <pre style="border: 1px dashed;color:gray"> client1 has left this chatroom.
+
+</pre>Message correctly includes name of client that has left.<br><b style="color:green">Message receipt successful.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing sending message to server by client4. (Socket Resource id #10)</b><br>Sending Message to Server:<pre style="border 1px dashed;color:gray">DISCONNECT: 0
+PORT: 0
+CLIENT_NAME: client4
+</pre><b style="color:green">Send Succeeded.</b><br></div>Reconnecting first client<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client1. (Socket Resource id #12)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  6
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client1. (Socket Resource id #12)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client1
+<br>Message form is correct:   client1 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client1 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div>Reconnecting second client<br><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing connecting to server.</b><br>Socket created.<br><br>Attempting to connect to 134.226.44.50:8080 <br><b style="color:green">Connection Successful for host 134.226.44.50 on port 8080.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing joining server by client2. (Socket Resource id #13)</b><br>Send Succeeded. Testing response.<br>Recieved Message from server: JOINED_CHATROOM: room1
+<br>First string is correct form JOINED_CHATROOM:XXXX.<br>Chatroom name is correct: room1<br>Second string is correct form SERVER_IP:XXXX.<br>IP string is valid form:  134.226.44.50
+<br>Third string is correct form PORT:XXXX.<br>Port string is valid form:  8080
+<br>Third string is correct form ROOM_REF:XXXX.<br>room_ref string is valid form:  1
+<br>Third string is correct form JOIN_ID:XXXX.<br>join_id string is valid form:  7
+<br><b style="color:green;border">Server Join Test Success</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #13)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing join message regarding client2. (Socket Resource id #12)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>Clientname is correct:  client2
+<br>Message form is correct:   client2 has joined this chatroom.
+Full message recieved: <pre style="border:1px dashed;color:gray"> client2 has joined this chatroom.
+
+</pre><b style="color:green;border">Server join message recieved successfully.</b></div><div style="border:1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green">Testing the sending of a message from client1</b><br>Sending Message<pre style="color:gray;border:1px dashed">CHAT: 1
+JOIN_ID: 6
+CLIENT_NAME: client1
+MESSAGE: hello world from client 1
+
+</pre><b style="color:green">Send Succeeded.</b><br></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client1. (Socket Resource id #12)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client1
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 1
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div><div style="border: 1px dashed;padding:10px;margin-top:10px;margin-bottom:10px;"><b style="color:green;">Testing for receipt of message from client1. (Socket Resource id #13)</b><br>Recieved Message from server: CHAT: 1
+<br>Room Ref is correct:  1
+<br>clientname is correct:  client1
+<br>Message content is correct: <pre style="border:1px dashed;color:gray">hello world from client 1
+
+</pre><div style="color:green"><b>Message receipt successful</b></div></div>Sending Message to server: <pre style="color:gray;border:1px dashed"> KILL_SERVICE
+ </pre>Succeeded.<br>Your server should have shutdown...we will now test.<br>Host socket disconnected  as expected.<p><b>Tests Complete</b></p><p>All tests passed<br></p><p><b>Grade: 100</b> =  round( (75 / 75)  * 20 + (1755 / 1755) * 70 + (25 / 25)  * 10)</p><div style="color:red;">No grade possible.</div><div>Complete.</div></div></td></tr></tbody></table></div></div></body></html>

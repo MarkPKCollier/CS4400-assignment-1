@@ -1,0 +1,368 @@
+.h {margin-top:10px;width:100%;background:#2381be;}
+.h, .h a, .h a:link, .h a:visited, .h a:hover {color:#fff;}
+.h h1 {float:left;margin:8px 12px 6px 0px;padding:0;font-size:2.25em;line-height:1.34em;font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;font-weight:normal;}
+.h h1,
+.h h1 a {text-decoration:none;border-bottom:0px solid #4192af;}
+.h h1 a:hover,
+.h h1 a:focus {border-bottom:0;}
+
+.h p.structure {clear:left;font-size:1.2em;line-height:1.34em;margin:0px 0 0 0px;padding:0}
+.h p.structure,
+.h p.structure a {}
+.h p.structure a {border-bottom:0px solid #4192af;text-decoration:none;padding:0 0 2px 0;}
+.h p.structure a:hover,
+.h p.structure a:focus {border-bottom:0;}
+.h-inner {padding:0 12px;height:auto!important;min-height:84px;height:84px;background:url(http://www.scss.tcd.ie/tms/t/scss/img/h-inner.jpg) no-repeat 100% 0;}
+
+.heading{
+        font-family: Sans-Serif;
+        font-size: 1.2em;
+        text-decoration: none;
+}
+
+.sitemenu {
+        font-weight: bold;
+        font-family: Sans-Serif;
+        font-size: 1.7em;
+        text-decoration: none;
+        color: red;
+        }
+.sitemenu a:link, .sitemenu a:visited, .sitemenu a:hover {color: black;}
+
+.footer {
+   color: grey;
+        font-family: Sans-Serif;
+        font-size: 1.0em;
+        text-decoration: none;
+ }
+
+body {
+        font-size: 62.5%; /* Resets 1em to 10px */
+        font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        color: #333;
+        text-align: center;
+        }
+
+#page {
+        background-color: white;
+        text-align: left;
+        }
+
+#content {
+        font-size: 1.2em
+        }
+
+.widecolumn .entry p {
+        font-size: 1.05em;
+        }
+
+.narrowcolumn .entry, .widecolumn .entry {
+        line-height: 1.4em;
+        }
+
+.widecolumn {
+        line-height: 1.6em;
+        }
+
+.narrowcolumn .postmetadata {
+        text-align: center;
+        }
+
+.alt {
+        background-color: #f8f8f8;
+
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        }
+
+#footer {
+        border: none;
+        }
+
+small {
+        font-family: Sans-Serif;
+        font-size: 0.9em;
+        line-height: 1.5em;
+        }
+
+h1, h2, h3 {
+        font-family: 'Trebuchet MS', 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        font-family: Sans-Serif;
+        font-weight: bold;
+        }
+
+h1 {
+        font-size: 4em;
+        text-align: center;
+        }
+
+h2 {
+        font-size: 1.6em;
+        }
+
+h2.pagetitle {
+        font-size: 1.6em;
+        }
+
+#sidebar h2 {
+        font-family: 'Lucida Grande', Verdana, Sans-Serif;
+        font-size: 1.2em;
+        }
+
+h3 {
+        font-size: 1.3em;
+        }
+
+h1, h1 a, h1 a:hover, h1 a:visited, #headerimg .description {
+        text-decoration: none;
+        }
+
+h2, h2 a, h2 a:visited, h3, h3 a, h3 a:visited {
+        color: #006699;
+        }
+
+a:link {color: #006699;}  a:visited { color: #006699}
+
+h2, h2 a, h2 a:hover, h2 a:visited, h3, h3 a, h3 a:hover, h3 a:visited, #sidebar h2, #wp-calendar caption, cite {
+        text-decoration: none;
+        }
+
+.entry p a:visited {
+        color: #006699;
+        }
+
+.commentlist li, #commentform input, #commentform textarea {
+        font: 0.9em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        }
+
+.commentlist li {
+        font-weight: bold;
+        }
+
+.commentlist cite, .commentlist cite a {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1.1em;
+        }
+
+.commentlist p {
+        font-weight: normal;
+        line-height: 1.5em;
+        text-transform: none;
+        }
+
+#commentform p {
+        font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        }
+
+.commentmetadata {
+        font-weight: normal;
+        }
+
+#sidebar {
+        font: 1em 'Lucida Grande', Verdana, Arial, Sans-Serif;
+        }
+
+small, #sidebar ul ul li, #sidebar ul ol li, .nocomments, .postmetadata, blockquote, strike {
+        color: #777;
+        }
+
+a, h2 a:hover, h3 a:hover {
+        color: #06c;
+        text-decoration: none;
+        }
+
+a:hover {
+        color: #147;
+        text-decoration: underline;
+        }
+
+#page {
+        position:relative;
+        background-color: white;
+        margin: 20px auto;
+        padding: 0;
+        width: 800px;
+        border: 0px solid #959596;
+        }
+
+.narrowcolumn {
+        width: 500px;
+        }
+
+.widecolumn {
+        width: 800px;
+        }
+
+/* End Structure */
+
+
+/*	Begin Headers */
+h1 {
+        padding-top: 70px;
+        margin: 0;
+        }
+
+h2 {
+        margin: 30px 0 0;
+        }
+
+h3 {
+        padding: 0;
+        margin: 30px 0 0;
+        }
+
+/* End Headers */
+
+
+/* Begin Lists
+        Special stylized non-IE bullets
+        Do not work in Internet Explorer, which merely default to normal bullets. */
+
+html>body ul {
+        margin-left: 0px;
+        padding: 0 0 0 30px;
+        list-style: none;
+        padding-left: 10px;
+        text-indent: -10px;
+        }
+
+html>body li {
+        margin: 7px 0 8px 10px;
+        }
+
+ul li:before {
+        content: "\00BB \0020";
+        }
+
+ol {
+        padding: 0 0 0 35px;
+        margin: 0;
+        }
+
+ol li {
+        margin: 0;
+        padding: 0;
+        }
+
+/* End Entry Lists */
+
+
+.center {
+        text-align: center;
+        }
+
+hr {
+        }
+
+a img {
+        border: none;
+        }
+
+/* End Various Tags & Classes*/
+
+
+#peoplelist li {
+  font-size: 15px;
+  list-style-type: none;
+  margin-left: -40px;
+  margin-top: -10px;
+}
+
+.badgephoto {
+  display: inline-block;
+  padding: 35px 0px 15px 0px;
+}
+
+.badgetext {
+  display: inline-block;
+  vertical-align: top;
+  padding: 15px 0px 0px 18px;
+}
+
+.badgename {
+  font: 700 18px/1.5 "Roboto", sans-serif;
+}
+
+.badgeposition {
+  font: italic 400 15px/1.5 "Roboto", sans-serif;
+  margin-top: -10px;
+  color: #383838;
+}
+
+.pme-cell-0 {vertical-align: top;text-align:left;}
+.pme-cell-1 {vertical-align: top;text-align:left;}
+
+/* tooltip base */
+.tooltip { outline:none; position: relative;}
+
+.tooltip span {
+  z-index: 10;
+  position: absolute;
+  display: none;
+  padding: .5em;
+  line-height: 1em;
+  color: #fff;
+  background: #f66;
+  text-decoration: none;
+  box-shadow: 1px 1px 2px rgba(55,55,55,.3);
+  white-space: nowrap;
+}
+.tooltip span img {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: .5em solid transparent;
+}
+.tooltip.n {text-decoration:none;}
+/* north */
+.tooltip.n span {
+  top: -225%;
+  left: -25%;
+  margin-left: 1em;
+  margin-top: 0;
+}
+.tooltip.n span img {
+  border-top: .5em solid #f66;
+  bottom: -1em;
+  left: 1em;
+}
+/* south */
+.tooltip.s span {
+  bottom: -225%;
+  left: -25%;
+  margin-left: 1em;
+  margin-top: 100%;
+}
+.tooltip.s span img {
+  border-bottom: .5em solid #f66;
+  top: -1em;
+  left: 1em;
+}
+/* east */
+.tooltip.e span {
+  top: 0;
+  left: 100%;
+  margin-left: 1em;
+  margin-top: -.5em;
+}
+.tooltip.e span img {
+  border-right: .5em solid #f66;
+  top: .5em;
+  left: -1em;
+}
+/* west */
+.tooltip.w span {
+  top: 0;
+  right: 100%;
+  margin-right: 1em;
+  margin-top: -.5em;;
+}
+.tooltip.w span img {
+  border-left: .5em solid #f66;
+  top: .5em;
+  right: -1em;
+}
+/* event: hover */
+.tooltip:hover span{ display: block; }
+
